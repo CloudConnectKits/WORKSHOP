@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {font-family:Calibri,Arial,Helvetica,Sans-Serif;}
+div.caption {float:left; width:80px;}
+div.val {float:left; width:50px;}
+div.slider {float:left; width:180px;}
+input[type="range"] {width:160px;}
+div.group {clear:left;padding-top:20px;}
+div#settings {float:left;}
+</style>
+
+<script type="text/javascript">
+var displaying = false;
+
+var HTTP_OK =  200;
+var AJAX_READY = 4;
+var blinkRate = { 0:'0Hz', 1:'2Hz', 2:'1Hz', 3:'0.5 Hz'};
+var host = location.host;
+
+function updateInput(id, val) {
+  document.getElementById(id).value=val; 
+}
+function updateVal(id, val) {
+  document.getElementById(id).innerHTML=val;
+}
+
+function issueHttpGet(command, data, mode)
+{
+    var xmlHttp = null;
+    mode = typeof mode !== 'undefined' ? mode : 'update';
+
+    xmlHttp = new XMLHttpRequest();
+    var url = location.protocol + '//' + host + '/led_matrix/' + mode + '/' + command + '?data=' + data;
+    xmlHttp.open( "GET", url , true ); //async is set to true
+    xmlHttp.send( null );
+}
+function retrieveInfo()
+{
+
+    var xmlHttp = null;
+
+    xmlHttp = new XMLHttpRequest();
+    var url = location.protocol + '//' + host + '/led_matrix/retrieve/all';
+	xmlHttp.onreadystatechange = function() {
+  		if (xmlHttp.readyState == AJAX_READY && xmlHttp.status == HTTP_OK) 
+  		{
+    		displayInfo(xmlHttp.responseText);
+    	}
+    }	
+    xmlHttp.open( "GET", url , true ); //async is set to true
+    xmlHttp.send( null );
+}
+
+
+function displayInfo(infoJson){
+	displaying = true;
+	info = JSON.parse(infoJson);
+	document.getElementById("settings").innerHTML = 'Message: ' + info.msg  + '<br />' +
+			'Brightness: ' + info.brightness + '<br />' +
+			'Scroll delay: ' + info.scroll + 'ms<br />' +
+			'Blink rate: ' + blinkRate[info.blink] + '<br />';
+	updateInput('brightness', info.brightness);
+	updateVal('brightnessText',info.brightness);	
+	updateInput('scroll', info.scroll);
+    updateVal('scrollText',info.scroll);	
+	updateInput('blink', info.blink);
+	updateVal('blinkText', info.blink);
+	updateInput('msg', info.msg);
+	displaying = false;
+}
+function init()
+{
+    document.getElementById('msg').addEventListener('keyup', function(e) 
+    {
+        var msg = this.value;
+        if(e.keyCode==13 && msg.length > 0) 
+        {
+            issueHttpGet('text', msg);
+            retrieveInfo();
+        }
+    });
+    document.getElementById('send').addEventListener('click', function (event) 
+    {
+        var msg = document.getElementById('msg').value;    
+        if(msg.length > 0)
+        {    
+            issueHttpGet('text', msg);
+            retrieveInfo();
+        }
+    });
+    document.getElementById('brightness').addEventListener('change', function (event) 
+    {
+        if(displaying) return;
+        var val = this.value;
+        updateVal('brightnessText',val);
+        issueHttpGet('brightness', val);
+        retrieveInfo();
+    });
+    document.getElementById('blink').addEventListener('change', function (event) 
+    {
+        if(displaying) return;
+        var val=this.value;
+        updateVal('blinkText',val);        
+        issueHttpGet('blink', val);
+        retrieveInfo();
+    });
+    document.getElementById('scroll').addEventListener('change', function (event) 
+    {
+        if(displaying) return;
+        var val = this.value;
+        updateVal('scrollText',val);        
+        issueHttpGet('scroll', val);
+        retrieveInfo();
+    });
+    retrieveInfo();
+}
+</script>
+</head>
+<body>
+<h1>LED Matrix Demo</h1>
+<div class="group">
+<div class="caption">Message</div>
+<input type="text" id="msg" value="ZentriOS 8x8 LED Matrix Demo" size="30">
+<input type="submit" id="send" value="Send">
+</div>
+<div class="group">
+<div class="caption">Brightness</div>
+<div class="slider"><input type="range" id="brightness" min="0" max="15" value="15"></div>
+<div class="val" id="brightnessText">15</div>
+</div>
+<div class="group">
+<div class="caption">Scroll</div>
+<div class="slider"><input type="range" id="scroll" min="10" max="400" value="150"></div>
+<div class="val" id="scrollText">150</div>
+</div>
+<div class="group">
+<div class="caption">Blink</div>
+<div class="slider"><input type="range" id="blink" min="0" max="3" value="0" ></div>
+<div class="val" id="blinkText">0</div>
+</div>
+<div class="group">
+<div class="caption">Settings</div>
+<div id="settings"></div>
+</div>
+<script>init();</script>
+</body>
+</html>

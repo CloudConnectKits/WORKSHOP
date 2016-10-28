@@ -1,0 +1,26 @@
+{
+   "files": [
+      {
+         "flags": 0, 
+         "local_path": "resources/index.html", 
+         "name": "index.html", 
+         "platforms": null, 
+         "remote_path": "led_matrix/index.html", 
+         "type": 254, 
+         "version": "1.0.0.0"
+      }, 
+      {
+         "flags": 0, 
+         "local_path": "resources/message.txt", 
+         "name": "message.txt", 
+         "platforms": null, 
+         "remote_path": "message.txt", 
+         "type": 254, 
+         "version": "1.0.0"
+      }
+   ], 
+   "search_paths": [
+      "", 
+      "resources/web/jqwidgets/jqwidgets"
+   ]
+}
