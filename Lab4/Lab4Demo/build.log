@@ -1,0 +1,69 @@
+Making config file for first time
+SDK Version: 8741244D, ZentriOS Version: ZentriOS-WZ-3.2.0.12, Platform: AVN4343
+Compiling app_external_Lab4Demo
+Compiling lib_mqtt_wrapper
+Compiling Zentri_Platform_Common
+Copying debug symbols to project directory ...
+Making external_Lab4Demo-debug.zap
+Generating Application ...
+
++---------------------+--------------+---------+
+| Section             | Size (bytes) | % Total |
++---------------------+--------------+---------+
+| Zero Init (.bss)    |       416    |    9.2  |
+| Global Data (.data) |         4    |    0.1  |
+| Zap Thread Stack    |     4.00K    |   90.7  |
+| Total               |     4.41K    |    -    |
++---------------------+--------------+---------+
+RAM Usage: 4.41K of 57.62K (7.7%)
++---------------------+--------------+---------+
+| Section             | Size (bytes) | % Total |
++---------------------+--------------+---------+
+| Zap Headers         |        96    |    0.5  |
+| Code (.text)        |    14.29K    |   83.8  |
+| Read-Only (.rodata) |     2.66K    |   15.6  |
+| Zap Settings        |         4    |    0.0  |
+| Global Data Init    |         4    |    0.0  |
+| Total               |    17.05K    |    -    |
++---------------------+--------------+---------+
+Flash Usage: 17.05K of 28.00K (60.9%)
+
+Build complete
+Downloading/running application on device ...
+09:05:08.378 [INFO] Verifying DMS credentials ...
+09:05:10.592 [INFO] DMS credentials valid
+09:05:10.619 [INFO] Retrieving available platforms from DMS ...
+09:05:11.26 [INFO] 3 platforms available
+09:05:11.29 [INFO] Probing for connected device ...
+09:05:11.29 [INFO] Discovering device connected to local computer ...
+09:05:12.418 [INFO] Device discovered
+09:05:12.418 [INFO] Successfully discovered device
+09:05:12.427 [INFO] Retrieving device information ...
+09:05:12.846 [INFO] Gathering device information from SDK
+09:05:12.846 [INFO] Attempting to connect to ZentriOS
+09:05:14.178 [INFO] Retrieving UUID ...
+09:05:14.213 [INFO] Retrieving ZentriOS version ...
+09:05:14.250 [INFO] Retrieving SDK version ...
+09:05:14.289 [INFO] Retrieving security information ...
+09:05:14.328 [INFO] Retrieving MAC address ...
+09:05:14.788 [INFO] Successfully retrieved device information
+09:05:14.792 [INFO] Device UUID: A641304100000000470050001551343037303037
+09:05:14.792 [INFO] SDK Version: 8741244D
+09:05:14.792 [INFO] OS Version: ZENTRI-AVN4343_XZAP-3.2.0.12, 2016-10-04T05:27:13Z, ZentriOS-XZ-3.2.0.12
+09:05:14.792 [INFO] MAC address: 4C55CC144431
+09:05:14.825 [INFO] Verifying device platform ...
+09:05:14.825 [INFO] Verifying device SDK version ...
+09:05:14.832 [INFO] Success
+09:05:14.891 [INFO] Programming ZentriOS image ...
+09:05:14.892 [INFO] Erasing internal flash ...
+09:05:17.151 [INFO] Programming internal flash image ...
+09:05:19.753 [INFO] Success
+09:05:19.802 [INFO] Downloading 2 resources to device ...
+09:05:19.805 [INFO] Downloading lut_10bit.csv (129 bytes) ...
+09:05:20.453 [INFO] File up-to-date
+09:05:20.559 [INFO] Success
+09:05:20.562 [INFO] Downloading lut_12bit.csv (634 bytes) ...
+09:05:20.665 [INFO] File up-to-date
+09:05:20.770 [INFO] Success
+09:05:20.776 [INFO] Successfully downloaded application resources
+Finished

@@ -1,0 +1,25 @@
+{
+   "files": [
+      {
+         "flags": 0, 
+         "local_path": "resources/lut_10bit.csv", 
+         "name": "lut_10bit.csv", 
+         "platforms": null, 
+         "remote_path": "lut_10bit.csv", 
+         "type": 254, 
+         "version": "1.0.0.0"
+      }, 
+      {
+         "flags": 0, 
+         "local_path": "resources/lut_12bit.csv", 
+         "name": "lut_12bit.csv", 
+         "platforms": null, 
+         "remote_path": "lut_12bit.csv", 
+         "type": 254, 
+         "version": "1.0.0.0"
+      }
+   ], 
+   "search_paths": [
+      ""
+   ]
+}
